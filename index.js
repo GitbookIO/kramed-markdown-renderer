@@ -64,11 +64,11 @@ MarkdownRenderer.prototype.hr = function() {
 };
 
 MarkdownRenderer.prototype.list = function(body, ordered) {
-
+    return block(body);
 };
 
 MarkdownRenderer.prototype.listitem = function(text) {
-    return '\t' + text + '\n';
+    return '* ' + text + '\n';
 };
 
 MarkdownRenderer.prototype.paragraph = function(text) {
