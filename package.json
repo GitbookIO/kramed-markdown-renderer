@@ -1,0 +1,30 @@
+{
+  "name": "kramed-markdown-renderer",
+  "version": "0.0.0",
+  "description": "Renderer for kramed outputting markdown (useful for lexing markdown documents to modify them and then re-render them).",
+  "main": "index.js",
+  "scripts": {
+    "test": "export TESTING=true; mocha --reporter list"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/GitbookIO/kramed-markdown-renderer.git"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "kramed": "0.4.4",
+    "mocha": "1.18.2"
+  },
+  "keywords": [
+    "kramed",
+    "markdown",
+    "renderer",
+    "gitbook"
+  ],
+  "author": "Aaron O'Mullan <aaron.omullan@gmail.com>",
+  "license": "Apache v2",
+  "bugs": {
+    "url": "https://github.com/GitbookIO/kramed-markdown-renderer/issues"
+  },
+  "homepage": "https://github.com/GitbookIO/kramed-markdown-renderer"
+}
