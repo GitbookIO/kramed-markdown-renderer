@@ -24,4 +24,10 @@ describe('Markdown renderer', function() {
         assert.equal(RENDERED.indexOf('</'), -1);
         console.log(RENDERED);
     });
+    it('should produce the same html output as the original', function() {
+        assert.equal(
+            kramed(RENDERED),
+            kramed(CONTENT)
+        );
+    });
 });
