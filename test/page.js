@@ -19,7 +19,7 @@ function render(content) {
     return kramed.parser(lexed, options);
 }
 
-describe('Text renderer', function() {
+describe('Markdown renderer', function() {
     it('should strip all html tags', function() {
         assert.equal(RENDERED.indexOf('</'), -1);
         console.log(RENDERED);

@@ -6,7 +6,7 @@ var renderer = require('../');
 
 
 
-describe('Text renderer', function() {
+describe('Markdown renderer', function() {
     it("should have all methods that kramed's renderer has", function() {
         var m1 = methods(kramed.Renderer.prototype);
         var m2 = methods(renderer.prototype);
