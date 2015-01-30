@@ -86,7 +86,7 @@ MarkdownRenderer.prototype.em = function(text) {
 };
 
 MarkdownRenderer.prototype.codespan = function(text) {
-    return block(indent(text));
+    return '`'+text+'`';
 };
 
 MarkdownRenderer.prototype.br = function() {
