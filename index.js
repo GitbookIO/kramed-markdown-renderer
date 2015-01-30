@@ -63,8 +63,20 @@ MarkdownRenderer.prototype.hr = function() {
     return block('---');
 };
 
+MarkdownRenderer.prototype._listOrder = function(body, ordered) {
+    if(!ordered) {
+        return body;
+    }
+    return body
+    .split('\n')
+    .map(function(line, idx) {
+        return line.replace(/^\* /, (idx+1)+'. ');
+    })
+    .join('\n');
+};
+
 MarkdownRenderer.prototype.list = function(body, ordered) {
-    return block(body);
+    return block(this._listOrder(body, ordered));
 };
 
 MarkdownRenderer.prototype.listitem = function(text) {
