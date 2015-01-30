@@ -22,11 +22,12 @@ function repeat(str, n) {
 }
 
 function block(str) {
-    return wrap(str, '\n');
+    return wrap(str.trim(), '\n');
 }
 
 function lines(str) {
-    return (str ? str.split('\n') : []);
+    var s = str.trim();
+    return (s ? s.split('\n') : []);
 }
 
 function indent(str, prefix) {
@@ -80,11 +81,11 @@ MarkdownRenderer.prototype._listOrder = function(body, ordered) {
 };
 
 MarkdownRenderer.prototype.list = function(body, ordered) {
-    return block(this._listOrder(body.trim(), ordered));
+    return block(this._listOrder(body, ordered));
 };
 
 MarkdownRenderer.prototype.listitem = function(text) {
-    var rows = lines(text.trim());
+    var rows = lines(text);
     var head = rows[0];
     var rest = indent(rows.slice(1).join('\n'));
     return '\n' + '* ' + head + (rest ? '\n' + rest : '');
