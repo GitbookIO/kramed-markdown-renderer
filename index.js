@@ -76,16 +76,31 @@ MarkdownRenderer.prototype.paragraph = function(text) {
 };
 
 MarkdownRenderer.prototype.table = function(header, body) {
-    return '\n' + header + '\n' + body + '\n\n';
+    body = body.trim();
+    header = header.trim();
+
+    // Patch cell rows
+    var patch = function(str) {
+        return indent(str, '| ');
+    };
+
+    // Build seperator between header and body
+    var headerLine = patch(header)
+    .split('|')
+    .map(function(headerRow) {
+        return headerRow.length > 2 ? wrap(repeat('-', headerRow.length - 2), ' ') : ''
+    })
+    .join('|');
+
+    return block(patch(header)) + headerLine + block(patch(body));
 };
 
 MarkdownRenderer.prototype.tablerow = function(content) {
-    line = repeat('-', content.length);
-    return block(line + block(content) + line);
+    return content + '\n';
 };
 
 MarkdownRenderer.prototype.tablecell = function(content, flags) {
-    return '| ' + content;
+    return content + ' | ';
 };
 
 // span level renderer
