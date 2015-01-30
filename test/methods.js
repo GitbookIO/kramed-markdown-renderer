@@ -33,7 +33,11 @@ function methods(obj) {
         return [];
     }
 
-    return keys.filter(function(k) {
+    return keys
+    .filter(function(k) {
         return (typeof obj[k] === "function");
-    });
+    })
+    .filter(function(k) {
+        return k[0] !== '_';
+    })
 }
