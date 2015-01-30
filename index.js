@@ -2,6 +2,17 @@ function identity(x) {
     return x;
 }
 
+function reverse(str) {
+    return str
+    .split('')
+    .reverse()
+    .join('');
+}
+
+function wrap(str, wrapper) {
+    return wrapper + str + reverse(wrapper);
+}
+
 function repeat(str, n) {
     var s = '';
     for(var i = n; n--; n <= 0) {
@@ -11,7 +22,7 @@ function repeat(str, n) {
 }
 
 function block(str) {
-    return '\n' + str + '\n';
+    return wrap(str, '\n');
 }
 
 function indent(str, prefix) {
@@ -31,8 +42,9 @@ function MarkdownRenderer(options) {
 }
 
 MarkdownRenderer.prototype.code = function(code, lang, escaped) {
-    var limit = '```';
-    return block(limit + (lang || '') + block(code) + limit);
+    return block(
+        wrap(lang + block(code), '```')
+    );
 };
 
 MarkdownRenderer.prototype.blockquote = function(quote) {
@@ -78,15 +90,15 @@ MarkdownRenderer.prototype.tablecell = function(content, flags) {
 
 // span level renderer
 MarkdownRenderer.prototype.strong = function(text) {
-    return '**'+text+'**';
+    return wrap(text, '**');
 };
 
 MarkdownRenderer.prototype.em = function(text) {
-    return '*'+text+'*';
+    return wrap(text, '*');
 };
 
 MarkdownRenderer.prototype.codespan = function(text) {
-    return '`'+text+'`';
+    return wrap(text, '`');
 };
 
 MarkdownRenderer.prototype.br = function() {
