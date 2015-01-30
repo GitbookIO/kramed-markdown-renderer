@@ -30,3 +30,10 @@ Some more nice content ....
 [Cool stuff](http://gitbook.io)
 
 [Link to another Markdown file](./xyz/file.md)
+
+## I like tables ...
+
+First Header  | Second Header
+------------- | -------------
+Content Cell  | Content Cell
+Content Cell  | Content Cell
