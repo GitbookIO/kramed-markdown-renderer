@@ -44,7 +44,7 @@ MarkdownRenderer.prototype.html = function(html) {
 };
 
 MarkdownRenderer.prototype.heading = function(text, level, raw) {
-    return block(raw);
+    return block(repeat('#', level) + ' ' + raw);
 };
 
 MarkdownRenderer.prototype.hr = function() {
