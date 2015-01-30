@@ -37,3 +37,14 @@ First Header  | Second Header
 ------------- | -------------
 Content Cell  | Content Cell
 Content Cell  | Content Cell
+
+# I like lists ...
+
+* But unordered lists are a mess
+* It's ok, don't cry ...
+
+# Let there order !
+
+1. Be nice
+2. Be strong
+3. Be good
