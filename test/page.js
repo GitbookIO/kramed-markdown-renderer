@@ -10,7 +10,7 @@ var CONTENT = fs.readFileSync(path.join(__dirname, './fixtures/PAGE.md'), 'utf8'
 var RENDERED = render(CONTENT);
 
 function render(content) {
-    var lexed = kramed.lexer(CONTENT);
+    var lexed = kramed.lexer(content);
 
     // Options to parser
     var options = Object.create(kramed.defaults);
