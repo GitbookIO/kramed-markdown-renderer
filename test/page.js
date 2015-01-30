@@ -22,7 +22,6 @@ function render(content) {
 describe('Markdown renderer', function() {
     it('should strip all html tags', function() {
         assert.equal(RENDERED.indexOf('</'), -1);
-        console.log(RENDERED);
     });
     it('should produce the same html output as the original', function() {
         assert.equal(
