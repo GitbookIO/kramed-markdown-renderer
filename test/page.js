@@ -6,16 +6,18 @@ var kramed = require('kramed');
 
 var renderer = require('../');
 
-
 var CONTENT = fs.readFileSync(path.join(__dirname, './fixtures/PAGE.md'), 'utf8');
-var LEXED = kramed.lexer(CONTENT);
+var RENDERED = render(CONTENT);
 
-// Options to parser
-var options = Object.create(kramed.defaults);
-options.renderer = renderer();
+function render(content) {
+    var lexed = kramed.lexer(CONTENT);
 
-var RENDERED = kramed.parser(LEXED, options);
+    // Options to parser
+    var options = Object.create(kramed.defaults);
+    options.renderer = renderer();
 
+    return kramed.parser(lexed, options);
+}
 
 describe('Text renderer', function() {
     it('should strip all html tags', function() {
