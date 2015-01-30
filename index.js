@@ -25,9 +25,14 @@ function block(str) {
     return wrap(str, '\n');
 }
 
+function lines(str) {
+    return (str ? str.split('\n') : []);
+}
+
 function indent(str, prefix) {
+    // Return empty strings
     prefix = prefix || '    ';
-    return str.split('\n')
+    return lines(str)
     .map(function(line) {
         return prefix + line;
     })
@@ -67,8 +72,7 @@ MarkdownRenderer.prototype._listOrder = function(body, ordered) {
     if(!ordered) {
         return body;
     }
-    return body
-    .split('\n')
+    return lines(body)
     .map(function(line, idx) {
         return line.replace(/^\* /, (idx+1)+'. ');
     })
@@ -76,11 +80,14 @@ MarkdownRenderer.prototype._listOrder = function(body, ordered) {
 };
 
 MarkdownRenderer.prototype.list = function(body, ordered) {
-    return block(this._listOrder(body, ordered));
+    return block(this._listOrder(body.trim(), ordered));
 };
 
 MarkdownRenderer.prototype.listitem = function(text) {
-    return '* ' + text + '\n';
+    var rows = lines(text.trim());
+    var head = rows[0];
+    var rest = indent(rows.slice(1).join('\n'));
+    return '\n' + '* ' + head + (rest ? '\n' + rest : '');
 };
 
 MarkdownRenderer.prototype.paragraph = function(text) {
