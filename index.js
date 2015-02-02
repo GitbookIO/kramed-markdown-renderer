@@ -145,6 +145,10 @@ MarkdownRenderer.prototype.del = function(text) {
 };
 
 MarkdownRenderer.prototype.link = function(href, title, text) {
+    // Detect and handle inline links
+    if(text == href) {
+        return href;
+    }
     return '['+text+']('+href+')';
 };
 
