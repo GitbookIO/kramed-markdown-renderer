@@ -49,7 +49,7 @@ function MarkdownRenderer(options) {
 
 MarkdownRenderer.prototype.code = function(code, lang, escaped) {
     return block(
-        wrap(lang + block(code), '```')
+        wrap((lang || "") + block(code), '```')
     );
 };
 
