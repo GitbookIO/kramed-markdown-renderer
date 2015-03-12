@@ -8,6 +8,8 @@ var renderer = require('../');
 
 var CONTENT = fs.readFileSync(path.join(__dirname, './fixtures/PAGE.md'), 'utf8');
 var RENDERED = render(CONTENT);
+var HR_CONTENT = fs.readFileSync(path.join(__dirname, './fixtures/HR_TITLE_MIX.md'), 'utf8');
+var HR_RENDERED = render(HR_CONTENT);
 
 function render(content) {
     var lexed = kramed.lexer(content);
@@ -29,4 +31,11 @@ describe('Markdown renderer', function() {
             kramed(CONTENT)
         );
     });
+
+    it('should not turn HRs into titles', function() {
+        assert.equal(
+            kramed(HR_RENDERED),
+            kramed(HR_CONTENT)
+        );
+    })
 });
